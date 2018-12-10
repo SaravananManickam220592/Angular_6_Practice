@@ -1,0 +1,12 @@
+.likes{
+    margin: 10px;
+}
+
+.isLiked{
+    color: blue;
+}
+
+.likesText{
+    font-size: 2em;
+    font-weight: bold;
+}

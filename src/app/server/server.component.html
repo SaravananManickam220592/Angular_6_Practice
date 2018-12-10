@@ -1,0 +1,22 @@
+Enter the Server Name <input type="text" #inputValue > <button style="margin-left: 10px;" (click)="saveValue(inputValue)" class="btn btn-primary">Save</button>
+<div class="alert alert-success" *ngIf="createMessageStatus;else serverYetToMessage" role="alert" style="margin: 10px;">
+    Server created successfully
+</div>
+<ng-template #serverYetToMessage >
+    <div class="alert alert-secondary" style="margin: 10px;" role="alert">
+        Server yet to be created
+    </div>
+</ng-template>
+<h3>
+    Server Names
+</h3>
+<ul class="list-group">
+    <li class="list-group-item" *ngFor="let server of serverNames;index as i" >{{ i +'-'+ server }}</li>
+</ul>
+
+<div class="card" style="width: 18rem;">
+    <div class="card-heading">
+        Test
+     </div>
+  </div>
+

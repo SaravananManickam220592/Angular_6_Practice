@@ -1,0 +1,19 @@
+<form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="text" class="form-control" ngModel email #email="ngModel" minlength="20" required name="email" id="email" placeholder="Enter Your email">
+    <div class="alert alert-danger" *ngIf="email.touched && email.invalid">
+      <div *ngIf="email.errors.required" >Please enter a email</div> 
+      <div *ngIf="email.errors.email">Please enter a valid email</div>
+      <div *ngIf="email.errors.minlength">Email should have minimum {{email.errors.minlength.requiredLength}} characters</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" ngModel #name="ngModel" id="name" required name="name" placeholder="Enter your Name">
+    <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
+      <div *ngIf="name.errors.required" >Please enter a name</div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">Submit</button>
+</form>

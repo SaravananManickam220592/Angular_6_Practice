@@ -1,0 +1,33 @@
+<form [formGroup]="form">
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="text" class="form-control"
+    formControlName="email" name="email" id="email"
+    placeholder="Enter Your email">
+    <div class="alert alert-danger" *ngIf="email.touched && email.invalid">
+      <div *ngIf="email.errors.required">Email is Required</div>
+      <div *ngIf="email.errors.email">enter a valid Email</div>
+      <div *ngIf="email.errors.minlength">Email should be minimum {{ email.errors.minlength.requiredLength}} characters</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" id="name" formControlName="name" name="name" placeholder="Enter your Name">
+    <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
+     <div *ngIf="name.errors.required"> Name is Required</div>
+     <div *ngIf="name.errors.cannotContainSpace"> Name cannot contain space</div>
+     <div *ngIf="name.errors.shouldBeUnique"> Username already exists</div>
+    </div>
+    <div *ngIf="name.pending"> Checking User name Availability</div>
+  </div>
+  <div class="form-group" formGroupName="address">
+    <label for="streetName">StreetName</label>
+    <input type="text" class="form-control"
+    formControlName="streetName" name="streetName" id="streetName"
+    placeholder="Enter Your streetName">
+    <div class="alert alert-danger" *ngIf="streetName.touched && streetName.invalid">
+      <div *ngIf="streetName.errors.required">Street Name is Required</div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" (click)="signUp()">Submit</button>
+</form>
